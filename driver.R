@@ -22,7 +22,7 @@ save_challenge_predictions = function(file, predictions){
 # Parse arguments.
 args = commandArgs(trailingOnly=TRUE)
 if (length(args) != 2){
-    stop('Include the input and output directories as arguments, e.g., Rscript driver.r input output.')
+    stop('Include the input and output directories as arguments, e.g., Rscript driver.R input output.')
 }
 
 input_directory = args[1]
