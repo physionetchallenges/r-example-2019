@@ -41,12 +41,17 @@ if (!dir.exists(output_directory)){
 }
 
 # Load model.
+print('Loading sepsis model...')
 model = load_sepsis_model()
 
 # Iterate over files.
-for (file in files){
+print('Predicting sepsis labels...')
+num_files = length(files)
+for (i in 1:num_files){
+    print(paste0('    ', i, '/', num_files, '...'))
+
     # Load data.
-    input_file = file.path(input_directory, file)
+    input_file = file.path(input_directory, files[i])
     data = load_challenge_data(input_file)
 
     # Make predictions.
@@ -60,6 +65,8 @@ for (file in files){
     }
 
     # Save results.
-    output_file = file.path(output_directory, file)
+    output_file = file.path(output_directory, files[i])
     save_challenge_predictions(output_file, predictions)
 }
+
+print('Done.')
